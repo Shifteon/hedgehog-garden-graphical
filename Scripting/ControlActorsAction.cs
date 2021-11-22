@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using cse210_batter_csharp.Casting;
-using cse210_batter_csharp.Services;
+using hedgehog_garden_graphical.Casting;
+using hedgehog_garden_graphical.Services;
 
 
-namespace cse210_batter_csharp.Scripting
+namespace hedgehog_garden_graphical.Scripting
 {
     /// <summary>
     /// An action to draw all of the actors in the game.

@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using cse210_batter_csharp.Casting;
+using hedgehog_garden_graphical.Casting;
 
-namespace cse210_batter_csharp
+namespace hedgehog_garden_graphical
 {
     /// <summary>
     /// The base class of all other actions.

@@ -1,6 +1,6 @@
 using System;
 
-namespace cse210_batter_csharp.Casting
+namespace hedgehog_garden_graphical.Casting
 {
     /// <summary>
     /// The score board in the top portion of the game.

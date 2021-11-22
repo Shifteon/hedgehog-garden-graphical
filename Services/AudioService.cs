@@ -1,9 +1,9 @@
 using System;
 using Raylib_cs;
-using cse210_batter_csharp.Casting;
+using hedgehog_garden_graphical.Casting;
 using System.Collections.Generic;
 
-namespace cse210_batter_csharp.Services
+namespace hedgehog_garden_graphical.Services
 {
     /// <summary>
     /// Handles all the audio elements the game.

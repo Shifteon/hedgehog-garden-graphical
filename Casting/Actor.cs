@@ -1,6 +1,6 @@
 using System;
 
-namespace cse210_batter_csharp.Casting
+namespace hedgehog_garden_graphical.Casting
 {
     /// <summary>
     /// Base class for all actors in the game.

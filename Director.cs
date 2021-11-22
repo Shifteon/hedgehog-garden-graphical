@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using cse210_batter_csharp.Casting;
-using cse210_batter_csharp.Services;
-using cse210_batter_csharp.Scripting;
+using hedgehog_garden_graphical.Casting;
+using hedgehog_garden_graphical.Services;
+using hedgehog_garden_graphical.Scripting;
 
-namespace cse210_batter_csharp
+namespace hedgehog_garden_graphical
 {
     /// <summary>
     /// The director is responsible to direct the game, including to keep track of all

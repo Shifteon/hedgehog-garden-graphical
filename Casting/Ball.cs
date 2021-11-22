@@ -1,4 +1,4 @@
-namespace cse210_batter_csharp.Casting
+namespace hedgehog_garden_graphical.Casting
 {
     public class Ball : Actor
     {

@@ -40,9 +40,6 @@ namespace hedgehog_garden_graphical
                 {
                     _keepPlaying = false;
                 }
-                Ball b = (Ball)_cast["balls"][0];
-                if (!b.GetAlive())
-                    _keepPlaying = false;
             }
 
             Console.WriteLine("Game over!");

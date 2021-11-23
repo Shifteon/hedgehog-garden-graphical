@@ -1,10 +1,8 @@
 namespace hedgehog_garden_graphical.Casting
 {
-    class Hedgehog : Actor
+    class SpecialHedgehog : Hedgehog
     {
-        private string _name;
-
-        public Hedgehog()
+        public SpecialHedgehog()
         {
             _width = 20;
             _height = 25;

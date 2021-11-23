@@ -129,9 +129,10 @@ namespace hedgehog_garden_graphical.Services
                 string image = actor.GetImage();
                 DrawImage(x, y, image);
             }
+            // TODO: See if you can draw text and a box. Maybe a textbox class?
             else if (actor.HasText())
             {
-                bool darkText = false;
+                bool darkText = true;
                 string text = actor.GetText();
                 DrawText(x, y, text, darkText);
             }

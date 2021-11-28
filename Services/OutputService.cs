@@ -68,7 +68,7 @@ namespace hedgehog_garden_graphical.Services
         /// <param name="height"></param>
         public void DrawBox(int x, int y, int width, int height)
         {
-            Raylib.DrawRectangle(x, y, width, height, Raylib_cs.Color.BLUE);            
+            Raylib.DrawRectangle(x, y, width, height, Raylib_cs.Color.WHITE);            
         }
 
         /// <summary>
@@ -112,6 +112,12 @@ namespace hedgehog_garden_graphical.Services
                 color);
         }
 
+        public void DrawTextBox(int x, int y, string text, bool darkText, int width, int height)
+        {
+            DrawBox(x, y, width, height);
+            DrawText(x, y, text, darkText);
+        }
+
         /// <summary>
         /// Draws a single actor.
         /// </summary>
@@ -129,7 +135,12 @@ namespace hedgehog_garden_graphical.Services
                 string image = actor.GetImage();
                 DrawImage(x, y, image);
             }
-            // TODO: See if you can draw text and a box. Maybe a textbox class?
+            else if (actor.GetIsTextbox())
+            {
+                bool darkText = true;
+                string text = actor.GetText();
+                DrawTextBox(x, y, text, darkText, width, height);
+            }
             else if (actor.HasText())
             {
                 bool darkText = true;

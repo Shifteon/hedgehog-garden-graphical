@@ -15,6 +15,7 @@ namespace hedgehog_garden_graphical.Casting
 
         protected string _text = "";
         private string _image = "";
+        private bool _isTextbox = false;
 
         public Actor()
         {
@@ -127,6 +128,16 @@ namespace hedgehog_garden_graphical.Casting
         public void SetVelocity(Point newVelocity)
         {
             _velocity = newVelocity;
+        }
+
+        protected void SetIsTextbox(bool isTextbox)
+        {
+            _isTextbox = isTextbox;
+        }
+
+        public bool GetIsTextbox()
+        {
+            return _isTextbox;
         }
 
         public void MoveNext()

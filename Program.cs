@@ -13,9 +13,17 @@ namespace hedgehog_garden_graphical
             // Create the cast
             Dictionary<string, List<Actor>> cast = new Dictionary<string, List<Actor>>();
 
+            // Create a player
+            cast["player"] = new List<Actor>();
+            cast["player"].Add(new Player());
+
             // Create a hedgehog
-            cast["hedgehogs"] = new List<Actor>();
-            cast["hedgehogs"].Add(new Hedgehog());
+            // cast["hedgehogs"] = new List<Actor>();
+            // cast["hedgehogs"].Add(new Hedgehog());
+
+            // Create a textbox
+            cast["textbox"] = new List<Actor>();
+            cast["textbox"].Add(new TextBox("This is a textbox!"));
 
             // Create the script
             Dictionary<string, List<Action>> script = new Dictionary<string, List<Action>>();
@@ -35,13 +43,14 @@ namespace hedgehog_garden_graphical
             script["update"].Add(new MoveActorsAction());
             script["update"].Add(new HandleOffScreenAction());
             script["update"].Add(new HandleCollisionsAction(physicsService, audioService));
+            script["update"].Add(new InteractAction(inputService));
 
             script["input"].Add(new ControlActorsAction(inputService));
 
             // Start up the game
             outputService.OpenWindow(Constants.MAX_X, Constants.MAX_Y, "Hedgehog Garden", Constants.FRAME_RATE);
             audioService.StartAudio();
-            audioService.PlaySound(Constants.SOUND_START);
+            // audioService.PlaySound(Constants.SOUND_START);
 
             Director theDirector = new Director(cast, script);
             theDirector.Direct();

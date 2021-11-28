@@ -19,6 +19,12 @@ namespace hedgehog_garden_graphical.Scripting
         public override void Execute(Dictionary<string, List<Actor>> cast)
         {
             Point direction = _inputService.GetDirection();
+            // We can only move left and right
+            direction = new Point(direction.GetX(), 0);
+            Actor player = cast["player"][0];
+
+            Point velocity = direction.Scale(Constants.PLAYER_SPEED);
+            player.SetVelocity(velocity);
         }
 
     }

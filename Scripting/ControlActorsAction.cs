@@ -25,6 +25,32 @@ namespace hedgehog_garden_graphical.Scripting
 
             Point velocity = direction.Scale(Constants.PLAYER_SPEED);
             player.SetVelocity(velocity);
+
+            DisplayHedgehogs(cast);
+        }
+
+        private void DisplayHedgehogs(Dictionary<string, List<Actor>> cast)
+        {
+            if (_inputService.IsSPressed() && cast["buffer"].Count == 0)
+            {
+                Player p = (Player)cast["player"][0];
+                string text = "";
+                int height = Constants.TEXTBOX_HEIGHT;
+                int y = Constants.TEXTBOX_Y;
+                // TODO: Fix how the textbox resizes and moves. See if this can be moved to the textbox
+                foreach (Hedgehog h in p.GetHedgehogs())
+                {
+                    text += $"{h.ToString()}\n";
+                    height += 20;
+                    y -= 20;
+                } 
+                cast["textbox"].Add(new TextBox(text, false));
+            }
+        }
+
+        private void DisplayFood(Dictionary<string, List<Actor>> cast)
+        {
+            
         }
 
     }

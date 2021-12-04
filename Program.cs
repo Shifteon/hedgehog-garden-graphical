@@ -16,14 +16,33 @@ namespace hedgehog_garden_graphical
             // Create a player
             cast["player"] = new List<Actor>();
             cast["player"].Add(new Player());
+            Player p = (Player)cast["player"][0];
+            p.AddHedgehog(new Hedgehog());
+            p.AddHedgehog(new Hedgehog());
+            p.AddHedgehog(new Hedgehog());
 
             // Create a hedgehog
             // cast["hedgehogs"] = new List<Actor>();
             // cast["hedgehogs"].Add(new Hedgehog());
 
+            // Create a bathhouse
+            cast["bathhouse"] = new List<Actor>();
+            cast["bathhouse"].Add(new Bathhouse());
+
+            // Create a store
+            cast["store"] = new List<Actor>();
+            cast["store"].Add(new Store());
+
+            // Cretae a gym
+            cast["gym"] = new List<Actor>();
+            cast["gym"].Add(new Gym());
+
             // Create a textbox
             cast["textbox"] = new List<Actor>();
-            cast["textbox"].Add(new TextBox("This is a textbox!"));
+            // cast["textbox"].Add(new TextBox("This is a textbox"));
+
+            // Create a buffer
+            cast["buffer"] = new List<Actor>();
 
             // Create the script
             Dictionary<string, List<Action>> script = new Dictionary<string, List<Action>>();
@@ -43,9 +62,10 @@ namespace hedgehog_garden_graphical
             script["update"].Add(new MoveActorsAction());
             script["update"].Add(new HandleOffScreenAction());
             script["update"].Add(new HandleCollisionsAction(physicsService, audioService));
-            script["update"].Add(new InteractAction(inputService));
+            script["update"].Add(new InteractAction(inputService, physicsService));
 
             script["input"].Add(new ControlActorsAction(inputService));
+            script["input"].Add(new InputBufferAction(inputService));
 
             // Start up the game
             outputService.OpenWindow(Constants.MAX_X, Constants.MAX_Y, "Hedgehog Garden", Constants.FRAME_RATE);

@@ -14,6 +14,7 @@ namespace hedgehog_garden_graphical.Casting
         protected int _height = 0;
 
         protected string _text = "";
+        protected string _selection = "";
         private string _image = "";
         private bool _isTextbox = false;
 
@@ -43,6 +44,16 @@ namespace hedgehog_garden_graphical.Casting
         public bool HasText()
         {
             return _text != "";
+        }
+
+        public void SetSelection(string selection)
+        {
+            _selection = selection;
+        }
+
+        public string GetSelection()
+        {
+            return _selection;
         }
 
         public bool HasBox()

@@ -15,6 +15,11 @@ namespace hedgehog_garden_graphical.Services
 
         }
 
+        public char GetChar()
+        {
+            return Convert.ToChar(Raylib.GetKeyPressed());
+        }
+
         public bool IsLeftPressed()
         {
             return Raylib.IsKeyDown(Raylib_cs.KeyboardKey.KEY_LEFT);
@@ -36,6 +41,21 @@ namespace hedgehog_garden_graphical.Services
         public bool IsSpacePressed()
         {
             return Raylib.IsKeyDown(Raylib_cs.KeyboardKey.KEY_SPACE);
+        }
+
+        public bool IsWPressed()
+        {
+            return Raylib.IsKeyDown(Raylib_cs.KeyboardKey.KEY_W);
+        }
+
+        public bool IsSPressed()
+        {
+            return Raylib.IsKeyDown(Raylib_cs.KeyboardKey.KEY_S);
+        }
+
+        public bool IsEnterPressed()
+        {
+            return Raylib.IsKeyDown(Raylib_cs.KeyboardKey.KEY_ENTER);
         }
 
         /// <summary>

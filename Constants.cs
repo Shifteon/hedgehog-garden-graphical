@@ -27,13 +27,13 @@ namespace hedgehog_garden_graphical
         public const int TEXTBOX_Y = MAX_Y - 150;
 
         public const int BATHHOUSE_X = MAX_X / 2;
-        public const int BATHHOUSE_Y = MAX_Y / 2;
+        public const int BATHHOUSE_Y = 100;
 
         public const int STORE_X = MAX_X / 2 - 150;
-        public const int STORE_Y = MAX_Y / 2;
+        public const int STORE_Y = 100;
 
         public const int GYM_X = MAX_X / 2 - 350;
-        public const int GYM_Y = MAX_Y / 2;
+        public const int GYM_Y = 100;
 
         public const int BUFFER_X = 300;
         public const int BUFFER_Y = 300;

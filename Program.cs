@@ -17,12 +17,14 @@ namespace hedgehog_garden_graphical
             cast["player"] = new List<Actor>();
             cast["player"].Add(new Player());
             Player p = (Player)cast["player"][0];
-            p.AddHedgehog(new Hedgehog());
-            p.AddHedgehog(new Hedgehog());
-            p.AddHedgehog(new Hedgehog());
+            // p.AddHedgehog(new Hedgehog());
+            // p.AddHedgehog(new Hedgehog());
+            // p.AddHedgehog(new Hedgehog());
 
             // Create a hedgehog
-            // cast["hedgehogs"] = new List<Actor>();
+            cast["hedgehogs"] = new List<Actor>();
+            cast["hedgehogs"].Add(new Hedgehog());
+            // cast["hedgehogs"].Add(new Hedgehog());
             // cast["hedgehogs"].Add(new Hedgehog());
 
             // Create a bathhouse
@@ -51,6 +53,7 @@ namespace hedgehog_garden_graphical
             InputService inputService = new InputService();
             PhysicsService physicsService = new PhysicsService();
             AudioService audioService = new AudioService();
+            TextboxService textboxService = new TextboxService(cast);
 
             script["output"] = new List<Action>();
             script["input"] = new List<Action>();
@@ -62,7 +65,7 @@ namespace hedgehog_garden_graphical
             script["update"].Add(new MoveActorsAction());
             script["update"].Add(new HandleOffScreenAction());
             script["update"].Add(new HandleCollisionsAction(physicsService, audioService));
-            script["update"].Add(new InteractAction(inputService, physicsService));
+            script["update"].Add(new InteractAction(inputService, physicsService, textboxService));
 
             script["input"].Add(new ControlActorsAction(inputService));
             script["input"].Add(new InputBufferAction(inputService));

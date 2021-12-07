@@ -20,7 +20,7 @@ namespace hedgehog_garden_graphical.Scripting
         {
             Point direction = _inputService.GetDirection();
             // We can only move left and right
-            direction = new Point(direction.GetX(), 0);
+            // direction = new Point(direction.GetX(), 0);
             Actor player = cast["player"][0];
 
             Point velocity = direction.Scale(Constants.PLAYER_SPEED);

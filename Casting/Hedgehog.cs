@@ -13,7 +13,7 @@ namespace hedgehog_garden_graphical.Casting
         public Hedgehog()
         {
             _width = 20;
-            _height = 25;
+            _height = 15;
             _position = new Point(Constants.MAX_X / 2, Constants.MAX_Y / 2);
             // Set up the max stats
             _maxStats["maxHunger"] = 0;
@@ -50,6 +50,11 @@ namespace hedgehog_garden_graphical.Casting
         public int GetHealth()
         {
             return _health;
+        }
+
+        public string GetName()
+        {
+            return _name;
         }
 
         public override string ToString()

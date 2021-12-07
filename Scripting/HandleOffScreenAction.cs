@@ -18,6 +18,10 @@ namespace hedgehog_garden_graphical.Scripting
                 player.SetPosition(new Point(Constants.MAX_X - Constants.PLAYER_WIDTH, player.GetY()));
             if (player.GetX() <= 0)
                 player.SetPosition(new Point(0, player.GetY()));
+            if (player.GetY() > Constants.MAX_Y - Constants.PLAYER_HEIGHT)
+                player.SetPosition(new Point(player.GetX() ,Constants.MAX_Y - Constants.PLAYER_HEIGHT));
+            if (player.GetY() <= 0)
+                player.SetPosition(new Point(player.GetX(), 0));
         }
 
     }

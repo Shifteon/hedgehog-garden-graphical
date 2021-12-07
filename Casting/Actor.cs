@@ -162,16 +162,6 @@ namespace hedgehog_garden_graphical.Casting
             int newX = (x + dx);
             int newY = (y + dy);
 
-            // if (newX < 0)
-            // {
-            //     newX = Constants.MAX_X;
-            // }
-
-            // if (newY < 0)
-            // {
-            //     newY = Constants.MAX_Y;
-            // }
-
             _position = new Point(newX, newY);
         }
 

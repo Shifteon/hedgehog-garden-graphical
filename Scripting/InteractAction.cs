@@ -10,11 +10,13 @@ namespace hedgehog_garden_graphical.Scripting
     {
         InputService _inputService;
         PhysicsService _physics;
+        TextboxService _textboxService;
 
-        public InteractAction(InputService inputService, PhysicsService physics)
+        public InteractAction(InputService inputService, PhysicsService physics, TextboxService textboxService)
         {
             _inputService = inputService;
             _physics = physics;
+            _textboxService = textboxService;
         }
         public override void Execute(Dictionary<string, List<Actor>> cast)
         {
@@ -26,12 +28,25 @@ namespace hedgehog_garden_graphical.Scripting
                     cast["textbox"].Remove(cast["textbox"][0]);
                 }
             }
-            // Handle interctions with the bathhouse, store, and gym
+            // Handle interctions with the bathhouse, store, gym, and hedgehogs
             if (cast["buffer"].Count == 0)
             {
                 BathhouseInteraction(cast);
                 StoreInteraction(cast);
                 GymInteraction(cast);
+                HedgehogInteraction(cast);
+            }
+        }
+
+        private void HedgehogInteraction(Dictionary<string, List<Actor>> cast)
+        {
+            Player p = (Player)cast["player"][0];
+            foreach (Hedgehog h in cast["hedgehogs"])
+            {
+                if (_physics.IsCollision(h, p))
+                {
+                    _textboxService.CreateTextbox($"This is {h.GetName()}");
+                }
             }
         }
 
@@ -41,7 +56,7 @@ namespace hedgehog_garden_graphical.Scripting
             {
                 if (_inputService.IsSpacePressed())
                 {
-                    cast["textbox"].Add(new TextBox("Press W to wash all hedgehogs."));
+                    _textboxService.CreateTextbox("Press W to wash all hedgehogs.");
                 }
                 if (_inputService.IsWPressed())
                 {
@@ -61,23 +76,23 @@ namespace hedgehog_garden_graphical.Scripting
             {
                 if (_inputService.IsSpacePressed())
                 {
-                    cast["textbox"].Add(new TextBox("Press W to buy things at the store"));
+                    _textboxService.CreateTextbox("Press W to buy things at the store");
                 }
                 if (_inputService.IsWPressed())
                 {
                     Player p = (Player)cast["player"][0];
-                    cast["textbox"].Add(new TextBox("Enter an item to purchase\n" + store.GetInventory()));
+                    _textboxService.CreateTextbox("Enter an item to purchase\n" + store.GetInventory());
                     cast["buffer"].Add(new Casting.Buffer(store));
                 }
-                if (cast["buffer"].Count == 0)
-                {
-                    Player p = (Player)cast["player"][0];
-                    Food f = store.Purchase(store.GetSelection(), p.GetMoney());
-                    if (f != null)
-                        p.AddFood(f);
-                    else if (store.GetSelection() != "")
-                        cast["textbox"].Add(new TextBox("Please select an item in stock or make sure you have enough money."));
-                }
+                // if (cast["buffer"].Count == 0)
+                // {
+                //     Player p = (Player)cast["player"][0];
+                //     Food f = store.Purchase(store.GetSelection(), p.GetMoney());
+                //     if (f != null)
+                //         p.AddFood(f);
+                //     else if (store.GetSelection() != "")
+                //         cast["textbox"].Add(new TextBox("Please select an item in stock or make sure you have enough money."));
+                // }
             }
         }
 
@@ -87,7 +102,7 @@ namespace hedgehog_garden_graphical.Scripting
             {
                 if (_inputService.IsSpacePressed())
                 {
-                    cast["textbox"].Add(new TextBox("Press W to exercise all hedgehogs"));
+                    _textboxService.CreateTextbox("Press W to exercise all hedgehogs");
                 }
                 if (_inputService.IsWPressed())
                 {

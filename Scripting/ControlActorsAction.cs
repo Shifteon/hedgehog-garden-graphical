@@ -10,47 +10,44 @@ namespace hedgehog_garden_graphical.Scripting
     /// </summary>
     public class ControlActorsAction : Action
     {
-        InputService _inputService;
+        private InputService _inputService;
+        private TextboxService _textboxService;
 
-        public ControlActorsAction(InputService inputService)
+        public ControlActorsAction(InputService inputService, TextboxService textboxService)
         {
             _inputService = inputService;
+            _textboxService = textboxService;
         }
         public override void Execute(Dictionary<string, List<Actor>> cast)
         {
             Point direction = _inputService.GetDirection();
-            // We can only move left and right
-            // direction = new Point(direction.GetX(), 0);
             Actor player = cast["player"][0];
 
             Point velocity = direction.Scale(Constants.PLAYER_SPEED);
             player.SetVelocity(velocity);
 
-            DisplayHedgehogs(cast);
+            MoveHedgehogs(cast);
+            DisplayStatus(cast);
         }
 
-        private void DisplayHedgehogs(Dictionary<string, List<Actor>> cast)
+        private void MoveHedgehogs(Dictionary<string, List<Actor>> cast)
         {
-            if (_inputService.IsSPressed() && cast["buffer"].Count == 0)
+            Player p = (Player)cast["player"][0];
+            foreach (Hedgehog h in p.GetHedgehogs())
             {
-                Player p = (Player)cast["player"][0];
-                string text = "";
-                int height = Constants.TEXTBOX_HEIGHT;
-                int y = Constants.TEXTBOX_Y;
-                // TODO: Fix how the textbox resizes and moves. See if this can be moved to the textbox
-                foreach (Hedgehog h in p.GetHedgehogs())
-                {
-                    text += $"{h.ToString()}\n";
-                    height += 20;
-                    y -= 20;
-                } 
-                cast["textbox"].Add(new TextBox(text, false));
+                h.SetPosition(new Point(p.GetX() + 30, p.GetY() + 30));
             }
         }
 
-        private void DisplayFood(Dictionary<string, List<Actor>> cast)
+        private void DisplayStatus(Dictionary<string, List<Actor>> cast)
         {
-            
+            Player p = (Player)cast["player"][0];
+            if (_inputService.IsDPressed())
+            {
+                _textboxService.CreateTextbox($"You have {p.GetKibble().Count} kibble\n" +
+                                              $"You have ${p.GetMoney()}\n" +
+                                              $"You have {cast["hedgehogs"].Count} hedgehogs");
+            }
         }
 
     }

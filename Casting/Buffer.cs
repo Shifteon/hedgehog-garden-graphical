@@ -17,7 +17,7 @@ namespace hedgehog_garden_graphical.Casting
 
         public void Update(char keyPress)
         {
-            if (keyPress != '\0')
+            if (keyPress != '\0' && keyPress != 'ā')
             {
                 _text = _text + keyPress;
             }

@@ -58,6 +58,16 @@ namespace hedgehog_garden_graphical.Services
             return Raylib.IsKeyDown(Raylib_cs.KeyboardKey.KEY_ENTER);
         }
 
+        public bool IsFPressed()
+        {
+            return Raylib.IsKeyDown(Raylib_cs.KeyboardKey.KEY_F);
+        }
+
+        public bool IsDPressed()
+        {
+            return Raylib.IsKeyDown(Raylib_cs.KeyboardKey.KEY_D);
+        }
+
         /// <summary>
         /// Gets the direction asked for by the current key presses
         /// </summary>

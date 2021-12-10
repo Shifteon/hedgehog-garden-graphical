@@ -9,11 +9,15 @@ namespace hedgehog_garden_graphical.Casting
     class TextBox : Actor
     {
         // TODO: Change reszie back to true after fixing the function
-        public TextBox(string text, bool resize = false)
+        private int _duration;
+        private DateTime _creationTime;
+        public TextBox(string text, int duration, bool resize = false)
         {
             _text = text;
             _height = Constants.TEXTBOX_HEIGHT;
             _width = Constants.TEXTBOX_WIDTH;
+            _duration = duration;
+            _creationTime = DateTime.UtcNow;
             if (resize)
             {
                 Resize();
@@ -24,6 +28,21 @@ namespace hedgehog_garden_graphical.Casting
             }
 
             SetIsTextbox(true);
+        }
+
+        public void SetDuration(int duration)
+        {
+            _duration = duration;
+        }
+
+        public int GetDuration()
+        {
+            return _duration;
+        }
+
+        public DateTime GetCreationTime()
+        {
+            return _creationTime;
         }
 
         private void Resize()

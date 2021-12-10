@@ -45,7 +45,30 @@ namespace hedgehog_garden_graphical.Scripting
             {
                 if (_physics.IsCollision(h, p))
                 {
-                    _textboxService.CreateTextbox($"This is {h.GetName()}");
+                    if (_inputService.IsSpacePressed())
+                    {
+                        _textboxService.CreateTextbox($"This is {h.ToString()}\nPress F to feed and W to have\nthem follow.", 5);
+                    }
+                    if (_inputService.IsWPressed())
+                            p.AddHedgehog(h);
+                    if (_inputService.IsFPressed())
+                    {
+                        if (p.GetKibble().Count != 0)
+                        {
+                            h.Feed(p.GetKibble()[p.GetKibble().Count - 1]);
+                            p.GetKibble().RemoveAt(p.GetKibble().Count - 1);
+                            _textboxService.CreateTextbox($"You fed {h.GetName()}!");
+                        }
+                        else
+                            _textboxService.CreateTextbox("You have no food!");
+                    }
+                }
+            }
+            if (p.GetHedgehogs().Count != 0)
+            {
+                if (_inputService.IsSPressed())
+                {
+                    p.GetHedgehogs().Clear();
                 }
             }
         }
@@ -64,6 +87,7 @@ namespace hedgehog_garden_graphical.Scripting
                     foreach (Hedgehog h in p.GetHedgehogs())
                     {
                         h.Wash();
+                        p.AddMoney(10);
                     }
                 }
             }
@@ -76,23 +100,26 @@ namespace hedgehog_garden_graphical.Scripting
             {
                 if (_inputService.IsSpacePressed())
                 {
-                    _textboxService.CreateTextbox("Press W to buy things at the store");
+                    _textboxService.CreateTextbox("Press W to buy kibble at the store");
                 }
                 if (_inputService.IsWPressed())
                 {
                     Player p = (Player)cast["player"][0];
-                    _textboxService.CreateTextbox("Enter an item to purchase\n" + store.GetInventory());
-                    cast["buffer"].Add(new Casting.Buffer(store));
+                    Kibble k = new Kibble();
+                    if (p.GetMoney() >= k.GetPrice())
+                    {
+                        p.AddKibble(k);
+                        // Charge the player
+                        p.AddMoney(-k.GetPrice());
+                        _textboxService.CreateTextbox("You got kibble!");
+                    }
+                    else
+                    {
+                        _textboxService.CreateTextbox("You don't have enough money!\n" +
+                                                      "Go to the gym or bathhouse to earn\nsome.");
+                    }
+                    
                 }
-                // if (cast["buffer"].Count == 0)
-                // {
-                //     Player p = (Player)cast["player"][0];
-                //     Food f = store.Purchase(store.GetSelection(), p.GetMoney());
-                //     if (f != null)
-                //         p.AddFood(f);
-                //     else if (store.GetSelection() != "")
-                //         cast["textbox"].Add(new TextBox("Please select an item in stock or make sure you have enough money."));
-                // }
             }
         }
 
@@ -110,6 +137,7 @@ namespace hedgehog_garden_graphical.Scripting
                     foreach (Hedgehog h in p.GetHedgehogs())
                     {
                         h.Exercise();
+                        p.AddMoney(10);
                     }
                 }
             }

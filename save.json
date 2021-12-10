@@ -1,0 +1,30 @@
+{
+  "player": {
+    "numKibble": "0",
+    "money": "0"
+  },
+  "hedgehog0": {
+    "name": "Harry",
+    "hunger": "200",
+    "health": "100",
+    "hygiene": "100",
+    "shiny": "True",
+    "newHog": "True"
+  },
+  "hedgehog1": {
+    "name": "Tom",
+    "hunger": "0",
+    "health": "100",
+    "hygiene": "100",
+    "shiny": "False",
+    "newHog": "True"
+  },
+  "hedgehog2": {
+    "name": "Dude",
+    "hunger": "200",
+    "health": "100",
+    "hygiene": "100",
+    "shiny": "False",
+    "newHog": "True"
+  }
+}

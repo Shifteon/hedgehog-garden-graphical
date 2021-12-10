@@ -17,8 +17,12 @@ namespace hedgehog_garden_graphical
 
         public const int PLAYER_SPEED = 15;
 
-        public const int PLAYER_WIDTH = 20;
-        public const int PLAYER_HEIGHT = 25;
+        public const int PLAYER_WIDTH = 39;
+        public const int PLAYER_HEIGHT = 66;
+        public const string IMAGE_PLAYER = "./Assets/player.png";
+        public const string IMAGE_HEDGEHOG = "./Assets/hedgehog.png";
+        public const string IMAGE_HEDGEHOG_SHINY = "./Assets/hedgehog(white).png";
+        public const string IMAGE_STORE = "./Assets/store.png";
 
         public const int TEXTBOX_WIDTH = MAX_X / 2;
         public const int TEXTBOX_HEIGHT = 100;
@@ -29,7 +33,7 @@ namespace hedgehog_garden_graphical
         public const int BATHHOUSE_X = MAX_X / 2;
         public const int BATHHOUSE_Y = 100;
 
-        public const int STORE_X = MAX_X / 2 - 150;
+        public const int STORE_X = MAX_X / 2 - 200;
         public const int STORE_Y = 100;
 
         public const int GYM_X = MAX_X / 2 - 350;

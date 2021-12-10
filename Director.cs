@@ -30,6 +30,8 @@ namespace hedgehog_garden_graphical
         /// </summary>
         public void Direct()
         {
+            SaveLoadService sl = new SaveLoadService();
+            sl.Load(_cast);
             while (_keepPlaying)
             {
                 CueAction("input");
@@ -41,7 +43,7 @@ namespace hedgehog_garden_graphical
                     _keepPlaying = false;
                 }
             }
-
+            sl.Save(_cast);
             Console.WriteLine("Game over!");
         }
 

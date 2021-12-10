@@ -1,10 +1,10 @@
 namespace hedgehog_garden_graphical
 {
-    public class Food
+    public class Kibble
     {
         protected int _calories = 100;
-        protected string _name;
-        protected int _price;
+        protected string _name = "Kibble";
+        protected int _price = 50;
 
         public string GetInfo()
         {
@@ -17,21 +17,6 @@ namespace hedgehog_garden_graphical
         public int GetPrice()
         {
             return _price;
-        }
-    }
-
-    public class Kibble: Food
-    {
-        public Kibble()
-        {
-            _name = "Kibble";
-            _price = 50;
-        }
-        
-
-        public override string ToString()
-        {
-            return "Kibble";
         }
     }
 }

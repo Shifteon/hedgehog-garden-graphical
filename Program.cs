@@ -13,20 +13,6 @@ namespace hedgehog_garden_graphical
             // Create the cast
             Dictionary<string, List<Actor>> cast = new Dictionary<string, List<Actor>>();
 
-            // Create a player
-            cast["player"] = new List<Actor>();
-            cast["player"].Add(new Player());
-            Player p = (Player)cast["player"][0];
-            // p.AddHedgehog(new Hedgehog());
-            // p.AddHedgehog(new Hedgehog());
-            // p.AddHedgehog(new Hedgehog());
-
-            // Create a hedgehog
-            cast["hedgehogs"] = new List<Actor>();
-            cast["hedgehogs"].Add(new Hedgehog());
-            // cast["hedgehogs"].Add(new Hedgehog());
-            // cast["hedgehogs"].Add(new Hedgehog());
-
             // Create a bathhouse
             cast["bathhouse"] = new List<Actor>();
             cast["bathhouse"].Add(new Bathhouse());
@@ -39,9 +25,16 @@ namespace hedgehog_garden_graphical
             cast["gym"] = new List<Actor>();
             cast["gym"].Add(new Gym());
 
+            // Create a hedgehog
+            cast["hedgehogs"] = new List<Actor>();
+
+            // Create a player
+            cast["player"] = new List<Actor>();
+            cast["player"].Add(new Player());
+            Player p = (Player)cast["player"][0];
+
             // Create a textbox
             cast["textbox"] = new List<Actor>();
-            // cast["textbox"].Add(new TextBox("This is a textbox"));
 
             // Create a buffer
             cast["buffer"] = new List<Actor>();
@@ -66,8 +59,9 @@ namespace hedgehog_garden_graphical
             script["update"].Add(new HandleOffScreenAction());
             script["update"].Add(new HandleCollisionsAction(physicsService, audioService));
             script["update"].Add(new InteractAction(inputService, physicsService, textboxService));
+            script["update"].Add(new UpdateAction(textboxService));
 
-            script["input"].Add(new ControlActorsAction(inputService));
+            script["input"].Add(new ControlActorsAction(inputService, textboxService));
             script["input"].Add(new InputBufferAction(inputService));
 
             // Start up the game

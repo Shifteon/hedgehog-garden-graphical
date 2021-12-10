@@ -46,7 +46,7 @@ namespace hedgehog_garden_graphical.Casting
             return _text != "";
         }
 
-        public void SetSelection(string selection)
+        public virtual void SetSelection(string selection)
         {
             _selection = selection;
         }

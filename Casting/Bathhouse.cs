@@ -4,8 +4,9 @@ namespace hedgehog_garden_graphical.Casting
     {
         public Bathhouse()
         {
-            _width = 100;
-            _height = 100;
+            SetImage(Constants.IMAGE_BATHHOUSE);
+            _width = 195;
+            _height = 111;
             _position = new Point(Constants.BATHHOUSE_X, Constants.BATHHOUSE_Y - 50);
         }
     }

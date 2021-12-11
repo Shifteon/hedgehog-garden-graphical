@@ -5,13 +5,14 @@ namespace hedgehog_garden_graphical.Casting
 {
     class Hedgehog : Actor
     {
-        private string _name = "Harry";
-        private int _hunger = 200;
-        private int _health = 100;
-        private int _hygiene = 100;
-        private bool _canGetNewHog = true;
-        private bool _isShiny = false;
-        private Dictionary<string, int> _maxStats = new Dictionary<string, int>();
+        protected string _name = "Harry";
+        protected int _hunger = 200;
+        protected int _health = 100;
+        protected int _hygiene = 100;
+        protected bool _canGetNewHog = true;
+        protected bool _isShiny = false;
+        protected bool _isSpecial = false;
+        protected Dictionary<string, int> _maxStats = new Dictionary<string, int>();
 
         public Hedgehog()
         {
@@ -20,10 +21,14 @@ namespace hedgehog_garden_graphical.Casting
                 SetImage(Constants.IMAGE_HEDGEHOG_SHINY);
             else
                 SetImage(Constants.IMAGE_HEDGEHOG);
-            _width = 36;
-            _height = 15;
+            _width = Constants.HEDGEHOG_WIDTH;
+            _height = Constants.HEDGEHOG_HEIGHT;
             Random r = new Random();
-            _position = new Point(r.Next(100, Constants.MAX_X - 100), r.Next(100, Constants.MAX_Y - 200));
+            _position = new Point(r.Next(100, Constants.MAX_X - 100), r.Next(200, Constants.MAX_Y - 200));
+            if (r.Next(1,20) < 11)
+                _velocity = new Point(2, 0);
+            else
+                _velocity = new Point(0, 2);
             // Set up the max stats
             _maxStats["maxHunger"] = 0;
             _maxStats["maxHealth"] = 300;
@@ -37,10 +42,14 @@ namespace hedgehog_garden_graphical.Casting
                 SetImage(Constants.IMAGE_HEDGEHOG_SHINY);
             else
                 SetImage(Constants.IMAGE_HEDGEHOG);
-            _width = 36;
-            _height = 15;
+            _width = Constants.HEDGEHOG_WIDTH;
+            _height = Constants.HEDGEHOG_HEIGHT;
             Random r = new Random();
-            _position = new Point(r.Next(100, Constants.MAX_X - 100), r.Next(100, Constants.MAX_Y - 200));
+            _position = new Point(r.Next(100, Constants.MAX_X - 100), r.Next(200, Constants.MAX_Y - 200));
+            if (r.Next(1,20) < 11)
+                _velocity = new Point(2, 0);
+            else
+                _velocity = new Point(0, 2);
             // Set up the max stats
             _maxStats["maxHunger"] = 0;
             _maxStats["maxHealth"] = 300;
@@ -127,38 +136,21 @@ namespace hedgehog_garden_graphical.Casting
             _canGetNewHog = false;
         }
 
+        public bool IsSpecial()
+        {
+            return _isSpecial;
+        }
+
         public void Wander()
         {
             Random r = new Random();
-            if (r.Next(1, 50) == 3)
-            {
-                _velocity = new Point(0, 10);
-            }
-            else if (r.Next(1, 50) == 5)
-            {
-                _velocity = new Point(10, 0);
-            }
-            else if (r.Next(1, 50) == 7)
-            {
-                _velocity = new Point(10, 10);
-            }
-            else if (r.Next(1, 50) == 10)
-            {
-                _velocity = new Point(0, -10);
-            }
-            else if (r.Next(1, 50) == 13)
-            {
-                _velocity = new Point(-10, 0);
-            }
-            else if (r.Next(1, 50) == 16)
-            {
-                _velocity = new Point(-10, -10);
-            }
-            else
-                _velocity = new Point(0, 0);
+            if (r.Next(1, 100) == 10)
+                _velocity = new Point(0, 2);
+            else if (r.Next(1, 100) == 20)
+                _velocity = new Point(2, 0);
         }
 
-        private void InitializeHedgehog(string name, string hunger, string health, string hygiene, string shiny, string newHog)
+        protected void InitializeHedgehog(string name, string hunger, string health, string hygiene, string shiny, string newHog)
         {
             _name = name;
             _hunger = Int32.Parse(hunger);

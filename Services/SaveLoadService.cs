@@ -19,7 +19,6 @@ namespace hedgehog_garden_graphical.Services
             save["player"].Add("numKibble", p.GetKibble().Count.ToString());
             save["player"].Add("money", p.GetMoney().ToString());
 
-            // Dictionary<string, string> hedgehogs = new Dictionary<string, string>();
             int i = 0;
             foreach (Hedgehog h in cast["hedgehogs"])
             {
@@ -30,6 +29,7 @@ namespace hedgehog_garden_graphical.Services
                 save[$"hedgehog{i}"].Add("hygiene", h.GetHygiene().ToString());
                 save[$"hedgehog{i}"].Add("shiny", h.IsShiny().ToString());
                 save[$"hedgehog{i}"].Add("newHog", h.CanGetNewHog().ToString());
+                save[$"hedgehog{i}"].Add("special", h.IsSpecial().ToString());
                 i++;
             }
 
@@ -49,8 +49,16 @@ namespace hedgehog_garden_graphical.Services
             {
                 if (data.Key.Contains("hedgehog"))
                 {
-                    Hedgehog h = new Hedgehog(data.Value["name"], data.Value["hunger"], data.Value["health"], data.Value["hygiene"], data.Value["shiny"], data.Value["newHog"]);
-                    hedgehogs.Add(h);
+                    if (data.Value["special"] == "True")
+                    {
+                        SpecialHedgehog h = new SpecialHedgehog(data.Value["name"], data.Value["hunger"], data.Value["health"], data.Value["hygiene"], data.Value["shiny"], data.Value["newHog"]);
+                        hedgehogs.Add(h);
+                    }
+                    else
+                    {
+                        Hedgehog h = new Hedgehog(data.Value["name"], data.Value["hunger"], data.Value["health"], data.Value["hygiene"], data.Value["shiny"], data.Value["newHog"]);
+                        hedgehogs.Add(h);
+                    }
                 }
             }
         }

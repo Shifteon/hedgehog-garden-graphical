@@ -17,7 +17,7 @@ namespace hedgehog_garden_graphical.Scripting
             // DestroyTextbox(cast);
             GetNewHedgehog(cast);
             // TODO: See if wandering can be made better
-            // HedgehogWander(cast);
+            HedgehogWander(cast);
         }
 
         private void GetNewHedgehog(Dictionary<string, List<Actor>> cast)
@@ -34,9 +34,19 @@ namespace hedgehog_garden_graphical.Scripting
             }
             if (newHog)
             {
-                Hedgehog h = new Hedgehog();
-                cast["buffer"].Add(new Buffer(h));
-                cast["hedgehogs"].Add(h);
+                // Is it a special hedgehog?
+                if (cast["hedgehogs"].Count % 10 == 0)
+                {
+                    SpecialHedgehog h = new SpecialHedgehog();
+                    cast["buffer"].Add(new Buffer(h));
+                    cast["hedgehogs"].Add(h);
+                }
+                else
+                {
+                    Hedgehog h = new Hedgehog();
+                    cast["buffer"].Add(new Buffer(h));
+                    cast["hedgehogs"].Add(h);
+                }
             }
         }
 

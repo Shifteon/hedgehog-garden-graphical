@@ -45,7 +45,7 @@ namespace hedgehog_garden_graphical.Scripting
                     {
                         if (_physicsService.IsCollision(hedge, hog))
                         {
-                            hog.SetPosition(new Point(hog.GetX() + 30, hog.GetY() + 30));
+                            hog.SetPosition(new Point(hog.GetX() + Constants.HEDGEHOG_WIDTH + 5, hog.GetY() + Constants.HEDGEHOG_HEIGHT + 5));
                         }
                     }
                 }

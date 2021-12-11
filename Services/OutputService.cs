@@ -48,6 +48,7 @@ namespace hedgehog_garden_graphical.Services
         {
             Raylib.BeginDrawing();
             Raylib.ClearBackground(_backgroundColor);
+            DrawImage(0, 0, Constants.IMAGE_BACKGROUND);
         }
 
         /// <summary>

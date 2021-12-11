@@ -22,7 +22,17 @@ namespace hedgehog_garden_graphical
         public const string IMAGE_PLAYER = "./Assets/player.png";
         public const string IMAGE_HEDGEHOG = "./Assets/hedgehog.png";
         public const string IMAGE_HEDGEHOG_SHINY = "./Assets/hedgehog(white).png";
+        public const string IMAGE_HEDGEHOG_SPECIAL = "./Assets/hedgehog(gold).png";
         public const string IMAGE_STORE = "./Assets/store.png";
+        public const string IMAGE_GYM = "./Assets/gym.png";
+        public const string IMAGE_BATHHOUSE = "./Assets/bathhouse.png";
+        public const string IMAGE_BACKGROUND = "./Assets/background.png";
+
+        public const int HEDGEHOG_WIDTH = 36;
+        public const int HEDGEHOG_HEIGHT = 15;
+
+        public const int SPECIAL_HEDGEHOG_WIDTH = 48;
+        public const int SPECIAL_HEDGEHOG_HEIGHT = 30;
 
         public const int TEXTBOX_WIDTH = MAX_X / 2;
         public const int TEXTBOX_HEIGHT = 100;
@@ -30,13 +40,13 @@ namespace hedgehog_garden_graphical
         public const int TEXTBOX_X = 200;
         public const int TEXTBOX_Y = MAX_Y - 150;
 
-        public const int BATHHOUSE_X = MAX_X / 2;
+        public const int BATHHOUSE_X = 550;
         public const int BATHHOUSE_Y = 100;
 
-        public const int STORE_X = MAX_X / 2 - 200;
+        public const int STORE_X = 50;
         public const int STORE_Y = 100;
 
-        public const int GYM_X = MAX_X / 2 - 350;
+        public const int GYM_X = 300;
         public const int GYM_Y = 100;
 
         public const int BUFFER_X = 300;

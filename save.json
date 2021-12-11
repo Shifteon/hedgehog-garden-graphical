@@ -9,7 +9,8 @@
     "health": "100",
     "hygiene": "100",
     "shiny": "True",
-    "newHog": "True"
+    "newHog": "True",
+    "special": "False"
   },
   "hedgehog1": {
     "name": "Tom",
@@ -17,7 +18,8 @@
     "health": "100",
     "hygiene": "100",
     "shiny": "False",
-    "newHog": "True"
+    "newHog": "True",
+    "special": "False"
   },
   "hedgehog2": {
     "name": "Dude",
@@ -25,6 +27,7 @@
     "health": "100",
     "hygiene": "100",
     "shiny": "False",
-    "newHog": "True"
+    "newHog": "True",
+    "special": "True"
   }
 }

@@ -4,8 +4,9 @@ namespace hedgehog_garden_graphical.Casting
     {
         public Gym()
         {
-            _width = 100;
-            _height = 100;
+            SetImage(Constants.IMAGE_GYM);
+            _width = 186;
+            _height = 111;
             _position = new Point(Constants.GYM_X, Constants.GYM_Y - 50);
         }
     }

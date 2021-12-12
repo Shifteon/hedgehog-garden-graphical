@@ -66,13 +66,9 @@ namespace hedgehog_garden_graphical
 
             // Start up the game
             outputService.OpenWindow(Constants.MAX_X, Constants.MAX_Y, "Hedgehog Garden", Constants.FRAME_RATE);
-            audioService.StartAudio();
-            // audioService.PlaySound(Constants.SOUND_START);
 
             Director theDirector = new Director(cast, script);
             theDirector.Direct();
-
-            audioService.StopAudio();
         }
     }
 }

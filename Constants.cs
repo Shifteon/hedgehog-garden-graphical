@@ -53,7 +53,6 @@ namespace hedgehog_garden_graphical
         public const int BUFFER_Y = 300;
         public const int BUFFER_WIDTH = 100;
         public const int BUFFER_HEIGHT = 50;
-
     }
 
 }
